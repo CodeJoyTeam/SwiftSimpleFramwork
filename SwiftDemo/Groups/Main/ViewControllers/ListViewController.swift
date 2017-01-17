@@ -23,7 +23,7 @@ class ListViewController: BaseViewController {
         
         self.demoTableView.register(UITableViewCell.self, forCellReuseIdentifier: CellIdentifierClass)
     
-        loadData()
+        loadData()//加载
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
