@@ -29,7 +29,6 @@ class ListViewController: BaseViewController {
         super.didReceiveMemoryWarning()
     }
     func loadData(){
-        
 //       HUD.show(HUDContentType.progress)
         ApiManager.sharedInstance.getListData(success: { (value) in
             PKHUD.sharedHUD.hide()
