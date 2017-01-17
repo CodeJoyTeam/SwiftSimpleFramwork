@@ -22,13 +22,11 @@ class ListViewController: BaseViewController {
         self.view.addSubview(self.demoTableView)
         
         self.demoTableView.register(UITableViewCell.self, forCellReuseIdentifier: CellIdentifierClass)
-        
-
+    
         loadData()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     func loadData(){
         
