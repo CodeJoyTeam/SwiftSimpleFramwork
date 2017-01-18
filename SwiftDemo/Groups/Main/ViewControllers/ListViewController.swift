@@ -22,7 +22,8 @@ class ListViewController: BaseViewController {
         self.view.addSubview(self.demoTableView)
         
         self.demoTableView.register(UITableViewCell.self, forCellReuseIdentifier: CellIdentifierClass)
-    
+        self.demoTableView.addSubview(self.refreshCtr)
+        
         loadData()//加载
     }
     override func didReceiveMemoryWarning() {
@@ -31,7 +32,8 @@ class ListViewController: BaseViewController {
     func loadData(){
 //       HUD.show(HUDContentType.progress)
         ApiManager.sharedInstance.getListData(success: { (value) in
-            PKHUD.sharedHUD.hide()
+        
+            self.refreshCtr.endRefreshing()
             
 //            HUD.hide()
             
@@ -52,7 +54,23 @@ class ListViewController: BaseViewController {
         _demoTableView.tableFooterView = v
         return _demoTableView
     }()
-    
+    lazy var refreshCtr:UIRefreshControl = {
+        let _refreshCtr:UIRefreshControl = UIRefreshControl.init()
+        
+        let string = "下拉刷新"
+        let ranStr = "下拉刷新"
+        let attrstring:NSMutableAttributedString = NSMutableAttributedString(string:string)
+        let str = NSString(string: string)
+        let theRange = str.range(of: ranStr)
+        
+        attrstring.addAttribute(NSForegroundColorAttributeName, value: UIColor.black, range: theRange)
+        attrstring.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 12), range: theRange)
+        _refreshCtr.attributedTitle = attrstring
+        
+        _refreshCtr.addTarget(self, action: #selector(ListViewController.loadData), for: UIControlEvents.valueChanged)
+        
+        return _refreshCtr
+    }()
     override func layoutPageSubViews() {
         self.demoTableView.snp.makeConstraints { (make) in
             make.top.equalTo(self.view).offset(0)
