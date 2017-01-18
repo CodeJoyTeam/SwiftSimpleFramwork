@@ -31,6 +31,8 @@ class ListViewController: BaseViewController {
     }
     func loadData(){
 //       HUD.show(HUDContentType.progress)
+        
+        //增加注释
         ApiManager.sharedInstance.getListData(success: { (value) in
         
             self.refreshCtr.endRefreshing()
