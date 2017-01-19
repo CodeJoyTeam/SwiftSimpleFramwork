@@ -9,122 +9,82 @@
 import UIKit
 
 
-enum SystemLocationManagerStatus {
-    case Success          ///成功
-    case Authorization    ///未获取到授权
-    case NoService        ///未开通服务
-    case Network          ///网络原因
-    case Other            ///其他
-}
-
 class FistViewController: BaseViewController {
 
+    fileprivate let CellIdentifierClass = "cellId"
+    
     override func viewDidLoad() {
-      
-        
-        
+
         super.viewDidLoad()
-        self.title = "第一页面"
-        self.view.addSubview(self.testButton)
-        
-//        var  `self` :String = "aaa"
-//    
-//        
-//        var possibleString: String? = ""
-//        possibleString = nil
-//        possibleString = possibleString! + "aaa"
-////        possibleString = "xxx"
-//        print(possibleString) // possibleString 为可选变量，需要使用!来访问的值
-//        print(possibleString)
+        setUpView()
+
     }
     override func layoutPageSubViews() {
-        self.testButton.snp.makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(100)
-            make.left.equalTo(self.view).offset(100)
-            make.width.equalTo(100)
-            make.height.equalTo(50)
+        self.demoTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.view).offset(0)
+            make.left.equalTo(self.view).offset(0)
+            make.right.equalTo(self.view).offset(0)
+            make.bottom.equalTo(self.view).offset(0)
         }
     }
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
-    lazy var testButton:UIButton = {
-        let _testButton = UIButton.init(type: UIButtonType.custom)
-        _testButton.backgroundColor = UIColor.lightGray
-        _testButton.setTitle("test", for: UIControlState.normal)
-        _testButton.addTarget(self, action: #selector(testButtonAction), for: UIControlEvents.touchUpInside)
-        return _testButton
+    
+    lazy var demoTableView:UITableView = {
+        let _demoTableView = UITableView.init(frame: CGRect(x:0,y:0,width:0,height:0), style: UITableViewStyle.plain)
+        _demoTableView.backgroundColor = UIColor.clear
+        _demoTableView.dataSource = self
+        _demoTableView.delegate = self
+        
+        let v:UIView = UIView.init(frame: CGRect.zero)
+        _demoTableView.tableFooterView = v
+        return _demoTableView
     }()
     
 }
 extension FistViewController{
 
-    func testButtonAction()  {
-        let listVC = ListViewController()
-        listVC.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(listVC, animated: true)
-      
-        
+    func setUpView() {
+        self.title = "第一页面"
+        self.view.addSubview(self.demoTableView)
+        self.demoTableView.register(UITableViewCell.self, forCellReuseIdentifier: CellIdentifierClass)
     }
-    func test(
-        input2: (
-        username: String,
-        password: String
-        
-        ),
-        dependency: (
-        username: String,
-        password: String
-        )
-        ){
-     
+
+}
+extension FistViewController:UITableViewDelegate,UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
-    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierClass)!
+        cell.textLabel?.numberOfLines = 0
+        
+        if(indexPath.row == 0){
+            cell.textLabel?.text = "简单的tableview\n下拉刷新，上拉加载 \n网络数据请求 \n网络加载图片"
+        }else{
+            cell.textLabel?.text = ""
+        }
+
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.row == 0){
+            let listVC = ListViewController()
+            self.navigationController?.pushViewController(listVC, animated: true)
+        }
+    }
 }
-
-enum WeekDay {
-    
-    case Monday
-    case Tuesday
-    case Wednesday
-    case Thursday
-    case Friday
-    case Saturday
-    case Sunday
-    
-}
-enum WeekDayWithRaw : String {
-    
-    case Monday = "1. Monday"
-    case Tuesday = "2. Tuesday"
-    case Wednesday = "3. Wednesday"
-    case Thursday = "4. Thursday"
-    case Friday = "5. Friday"
-    case Saturday = "6. Saturday"
-    case Sunday = "7. Sunday"
-    
-}
-
-class MyOptions {
-    
-    class var None   : UInt32 { return 0 }
-    
-    class var All    : UInt32 { return UInt32.max }
-    
-    class var First  : UInt32 { return 1 }
-    
-    class var Second : UInt32 { return 1<<1 }
-    
-    class var Third  : UInt32 { return 1<<2 }
-    
-    class var Forth :UInt32 {return Second | Third}
-    
-}
-
-
-
-
