@@ -54,6 +54,8 @@ extension ListViewController{
     func setUpView(){
         self.title = "table view"
         self.view.addSubview(self.demoTableView)
+
+        self.setRightButton(imgName: "tab_user_selected")
         
         self.demoTableView.register(UITableViewCell.self, forCellReuseIdentifier: CellIdentifierClass)
         
@@ -90,7 +92,10 @@ extension ListViewController{
 //        self.demoTableView.es_noticeNoMoreData()
 //        self.demoTableView.es_removeRefreshFooter()
     }
-
+    override func rightButtonAction() {
+        alert(title: "提示", msg: "请输入密码")
+    }
+    
 }
 extension ListViewController:UITableViewDelegate,UITableViewDataSource{
     
