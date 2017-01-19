@@ -50,8 +50,9 @@ class ListViewController: BaseViewController {
     
 }
 extension ListViewController{
+    //设置view
     func setUpView(){
-        self.title = "list view"
+        self.title = "table view"
         self.view.addSubview(self.demoTableView)
         
         self.demoTableView.register(UITableViewCell.self, forCellReuseIdentifier: CellIdentifierClass)
