@@ -8,7 +8,7 @@ pod 'IQKeyboardManagerSwift'
 pod 'Kingfisher'
 pod 'SwiftyJSON', '~> 3.1.3'
 pod 'EZSwiftExtensions'
-pod 'PKHUD_Swift_3'
+pod 'ESPullToRefresh', '~> 2.5'
 
 
 end 

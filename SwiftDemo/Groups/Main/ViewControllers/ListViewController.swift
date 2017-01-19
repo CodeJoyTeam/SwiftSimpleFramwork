@@ -8,8 +8,9 @@
 
 import UIKit
 import SwiftyJSON
-import PKHUD
 import Kingfisher
+import ESPullToRefresh
+
 
 class ListViewController: BaseViewController {
 
@@ -18,61 +19,14 @@ class ListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "list view"
-        self.view.addSubview(self.demoTableView)
-        
-        self.demoTableView.register(UITableViewCell.self, forCellReuseIdentifier: CellIdentifierClass)
-        self.demoTableView.addSubview(self.refreshCtr)
-        
-        loadData()//加载
+        setUpView()
+        refresh()
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    func loadData(){
-//       HUD.show(HUDContentType.progress)
-        
-        //增加注释222
-        ApiManager.sharedInstance.getListData(success: { (value) in
-        
-            self.refreshCtr.endRefreshing()
-            
-//            HUD.hide()
-            
-            self.json = JSON(value)
-            self.demoTableView.reloadData()
-            
-        }) { (error) in
-            
-        }
-    }
-    lazy var demoTableView:UITableView = {
-        let _demoTableView = UITableView.init(frame: CGRect(x:0,y:0,width:0,height:0), style: UITableViewStyle.plain)
-        _demoTableView.backgroundColor = UIColor.clear
-        _demoTableView.dataSource = self
-        _demoTableView.delegate = self
-        
-        let v:UIView = UIView.init(frame: CGRect.zero)
-        _demoTableView.tableFooterView = v
-        return _demoTableView
-    }()
-    lazy var refreshCtr:UIRefreshControl = {
-        let _refreshCtr:UIRefreshControl = UIRefreshControl.init()
-        
-        let string = "下拉刷新"
-        let ranStr = "下拉刷新"
-        let attrstring:NSMutableAttributedString = NSMutableAttributedString(string:string)
-        let str = NSString(string: string)
-        let theRange = str.range(of: ranStr)
-        
-        attrstring.addAttribute(NSForegroundColorAttributeName, value: UIColor.black, range: theRange)
-        attrstring.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 12), range: theRange)
-        _refreshCtr.attributedTitle = attrstring
-        
-        _refreshCtr.addTarget(self, action: #selector(ListViewController.loadData), for: UIControlEvents.valueChanged)
-        
-        return _refreshCtr
-    }()
+    
     override func layoutPageSubViews() {
         self.demoTableView.snp.makeConstraints { (make) in
             make.top.equalTo(self.view).offset(0)
@@ -83,9 +37,60 @@ class ListViewController: BaseViewController {
         
     }
     
+    lazy var demoTableView:UITableView = {
+        let _demoTableView = UITableView.init(frame: CGRect(x:0,y:0,width:0,height:0), style: UITableViewStyle.plain)
+        _demoTableView.backgroundColor = UIColor.clear
+        _demoTableView.dataSource = self
+        _demoTableView.delegate = self
+        
+        let v:UIView = UIView.init(frame: CGRect.zero)
+        _demoTableView.tableFooterView = v
+        return _demoTableView
+    }()
     
 }
+extension ListViewController{
+    func setUpView(){
+        self.title = "list view"
+        self.view.addSubview(self.demoTableView)
+        
+        self.demoTableView.register(UITableViewCell.self, forCellReuseIdentifier: CellIdentifierClass)
+        
+        var header: ESRefreshProtocol & ESRefreshAnimatorProtocol
+        var footer: ESRefreshProtocol & ESRefreshAnimatorProtocol
+        header = ESRefreshHeaderAnimator.init(frame: CGRect.zero)
+        footer = ESRefreshFooterAnimator.init(frame: CGRect.zero)
+        _ = self.demoTableView.es_addPullToRefresh(animator: header) { [weak self] in
+            self?.refresh()
+        }
+        _ = self.demoTableView.es_addInfiniteScrolling(animator: footer) { [weak self] in
+            self?.loadMore()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.demoTableView.es_autoPullToRefresh()
+        }
+    }
+    //刷新
+    func refresh(){
+        ApiManager.sharedInstance.getListData(success: { (value) in
+            
+            self.json = JSON(value)
+            self.demoTableView.reloadData()
+            self.demoTableView.es_stopPullToRefresh()
+        }) { (error) in
+            self.demoTableView.es_stopPullToRefresh()
+        }
+    }
+    //加载更多
+    func loadMore(){
+        DLog(message: "loadMore")
+        self.demoTableView.reloadData()
+        self.demoTableView.es_stopLoadingMore()
+//        self.demoTableView.es_noticeNoMoreData()
+//        self.demoTableView.es_removeRefreshFooter()
+    }
 
+}
 extension ListViewController:UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
