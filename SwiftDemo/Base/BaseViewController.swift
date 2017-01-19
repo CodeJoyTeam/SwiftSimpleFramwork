@@ -21,18 +21,18 @@ open class BaseViewController: UIViewController {
     }
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.layoutPageSubViews()
+        layoutPageSubViews()
     }
-    func layoutPageSubViews()  {
-        
-    }
+    
     
   
 
 }
 extension BaseViewController{
-    
-   
+
+    func layoutPageSubViews()  {
+        
+    }
     
     
     
