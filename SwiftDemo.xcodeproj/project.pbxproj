@@ -22,12 +22,12 @@
 		9571C5FE1E1C81AC00370BD1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9571C5FD1E1C81AC00370BD1 /* CoreGraphics.framework */; };
 		9571C6001E1C81C400370BD1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9571C5FF1E1C81C400370BD1 /* CoreLocation.framework */; };
 		9571C6021E1C81D100370BD1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9571C6011E1C81D100370BD1 /* UserNotifications.framework */; };
-		9571C6061E1CA78200370BD1 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571C6051E1CA78200370BD1 /* ApiManager.swift */; };
 		9571C6171E1CEC2600370BD1 /* RegexHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571C6161E1CEC2600370BD1 /* RegexHelper.swift */; };
 		9571C6191E1CF36500370BD1 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571C6181E1CF36500370BD1 /* NetworkTool.swift */; };
+		9592E3551E306993000504B3 /* UIDevice+DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592E3541E306993000504B3 /* UIDevice+DeviceType.swift */; };
+		9592E3571E3069FD000504B3 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592E3561E3069FD000504B3 /* ApiManager.swift */; };
+		9592E3591E306A2B000504B3 /* UrlConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592E3581E306A2B000504B3 /* UrlConfig.swift */; };
 		95AEDDAC1E1B7683005F818A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AEDDAB1E1B7683005F818A /* Global.swift */; };
-		95AEDDAE1E1B78C2005F818A /* UrlConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AEDDAD1E1B78C2005F818A /* UrlConfig.swift */; };
-		95AEDDB41E1BA23D005F818A /* UIDevice+DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AEDDB31E1BA23D005F818A /* UIDevice+DeviceType.swift */; };
 		95AEDDB61E1BA587005F818A /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 95AEDDB51E1BA587005F818A /* libxml2.2.tbd */; };
 		95AEDDB81E1BA597005F818A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 95AEDDB71E1BA597005F818A /* libc++.tbd */; };
 		95AEDDBA1E1BA5EE005F818A /* libiconv.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 95AEDDB91E1BA5EE005F818A /* libiconv.2.tbd */; };
@@ -71,12 +71,12 @@
 		9571C5FF1E1C81C400370BD1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9571C6011E1C81D100370BD1 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		9571C6041E1C870800370BD1 /* SwiftDemo-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftDemo-Header.h"; sourceTree = "<group>"; };
-		9571C6051E1CA78200370BD1 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiManager.swift; path = ../Manager/ApiManager.swift; sourceTree = "<group>"; };
 		9571C6161E1CEC2600370BD1 /* RegexHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexHelper.swift; sourceTree = "<group>"; };
 		9571C6181E1CF36500370BD1 /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
+		9592E3541E306993000504B3 /* UIDevice+DeviceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+DeviceType.swift"; sourceTree = "<group>"; };
+		9592E3561E3069FD000504B3 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		9592E3581E306A2B000504B3 /* UrlConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlConfig.swift; sourceTree = "<group>"; };
 		95AEDDAB1E1B7683005F818A /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		95AEDDAD1E1B78C2005F818A /* UrlConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UrlConfig.swift; path = ../Utils/UrlConfig.swift; sourceTree = "<group>"; };
-		95AEDDB31E1BA23D005F818A /* UIDevice+DeviceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIDevice+DeviceType.swift"; path = "../Utils/UIDevice+DeviceType.swift"; sourceTree = "<group>"; };
 		95AEDDB51E1BA587005F818A /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		95AEDDB71E1BA597005F818A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		95AEDDB91E1BA5EE005F818A /* libiconv.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.tbd; path = usr/lib/libiconv.2.tbd; sourceTree = SDKROOT; };
@@ -250,8 +250,8 @@
 		9515C47B1DD574F300E27DD3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				9571C6051E1CA78200370BD1 /* ApiManager.swift */,
-				95AEDDAD1E1B78C2005F818A /* UrlConfig.swift */,
+				9592E3581E306A2B000504B3 /* UrlConfig.swift */,
+				9592E3561E3069FD000504B3 /* ApiManager.swift */,
 				9571C6181E1CF36500370BD1 /* NetworkTool.swift */,
 			);
 			path = Network;
@@ -337,7 +337,7 @@
 		95AEDDB21E1B9088005F818A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				95AEDDB31E1BA23D005F818A /* UIDevice+DeviceType.swift */,
+				9592E3541E306993000504B3 /* UIDevice+DeviceType.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -464,8 +464,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9592E3571E3069FD000504B3 /* ApiManager.swift in Sources */,
 				9529B88E1DDE9D5A0047A200 /* SecondViewController.swift in Sources */,
 				9529B88A1DDE9BFF0047A200 /* RootTabBarController.swift in Sources */,
+				9592E3591E306A2B000504B3 /* UrlConfig.swift in Sources */,
 				9571C6171E1CEC2600370BD1 /* RegexHelper.swift in Sources */,
 				9515C4861DD591FB00E27DD3 /* BaseViewController.swift in Sources */,
 				9571C6191E1CF36500370BD1 /* NetworkTool.swift in Sources */,
@@ -476,10 +478,8 @@
 				9515C46B1DD5691000E27DD3 /* SwiftDemo.xcdatamodeld in Sources */,
 				9529B88C1DDE9D4E0047A200 /* FistViewController.swift in Sources */,
 				9529B8961DDEA3EE0047A200 /* ListViewController.swift in Sources */,
-				9571C6061E1CA78200370BD1 /* ApiManager.swift in Sources */,
 				9515C4631DD5691000E27DD3 /* AppDelegate.swift in Sources */,
-				95AEDDAE1E1B78C2005F818A /* UrlConfig.swift in Sources */,
-				95AEDDB41E1BA23D005F818A /* UIDevice+DeviceType.swift in Sources */,
+				9592E3551E306993000504B3 /* UIDevice+DeviceType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
