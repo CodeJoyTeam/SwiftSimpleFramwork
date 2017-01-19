@@ -84,6 +84,7 @@ extension FistViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.row == 0){
             let listVC = ListViewController()
+            listVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(listVC, animated: true)
         }
     }
