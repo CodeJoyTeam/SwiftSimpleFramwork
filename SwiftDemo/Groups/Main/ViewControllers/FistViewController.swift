@@ -63,7 +63,7 @@ extension FistViewController:UITableViewDelegate,UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
@@ -75,6 +75,8 @@ extension FistViewController:UITableViewDelegate,UITableViewDataSource{
         
         if(indexPath.row == 0){
             cell.textLabel?.text = "简单的tableview\n下拉刷新，上拉加载 \n网络数据请求 \n网络加载图片"
+        }else if(indexPath.row == 1){
+            cell.textLabel?.text = "自定义 NavigationBar 左右按钮"
         }else{
             cell.textLabel?.text = ""
         }
