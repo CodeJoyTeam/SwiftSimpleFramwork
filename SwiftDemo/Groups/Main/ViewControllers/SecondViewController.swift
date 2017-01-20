@@ -12,7 +12,7 @@ class SecondViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "第二页面"
+        self.navigationItem.title = "发现"
         // Do any additional setup after loading the view.
     }
 
