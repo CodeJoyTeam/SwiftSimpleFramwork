@@ -114,13 +114,8 @@ extension ListViewController:UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierClass)!
-       
-        let anchor_city = self.json["data"][indexPath.row]["anchor_city"]
-        let avatar_small = self.json["data"][indexPath.row]["avatar_small"]
-        let str_avatar_small:String = avatar_small.string == nil ? "" : avatar_small.string!
-        
-        cell.textLabel?.text = anchor_city.string
-        cell.imageView?.kf.setImage(with: URL.init(string: str_avatar_small), placeholder: UIImage.init(named: "tab_find_selected"), options: nil, progressBlock: nil, completionHandler: nil)
+        cell.textLabel?.text = self.json["data"][indexPath.row]["anchor_city"].string
+        cell.imageView?.kf.setImage(with: self.json["data"][indexPath.row]["avatar_small"].URL, placeholder: UIImage.init(named: "tab_find_selected"), options: nil, progressBlock: nil, completionHandler: nil)
         return cell
     }
 }
