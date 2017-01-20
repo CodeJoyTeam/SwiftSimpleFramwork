@@ -20,9 +20,46 @@ open class BaseViewController: UIViewController {
     override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.layoutPageSubViews()
+        layoutPageSubViews()
+    }
+    //MARK:-----属性-----
+    lazy var HUDView: UIActivityIndicatorView = {
+        let HUDView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let centerOffset = CGPoint(x: self.view.center.x, y: self.view.center.y-50)
+        HUDView.center = centerOffset
+        return HUDView
+    }()
+}
+
+//nav bar  按钮
+extension BaseViewController{
+
+    
+    //右边按钮  纯文字
+    func setRightButton(title:String){
+        let btn=UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+        btn.setTitle(title, for: UIControlState.normal)
+        btn.setTitleColor(UIColor.black, for: UIControlState.normal)
+        btn.setTitleColor(UIColor.lightGray, for: UIControlState.highlighted)
+        btn.addTarget(self, action: #selector(rightButtonAction), for: UIControlEvents.touchUpInside)
+        
+        let item=UIBarButtonItem(customView: btn)
+        self.navigationItem.rightBarButtonItem=item
+    }
+    //右边按钮 图片
+    func setRightButton(imgName:String){
+        let img=UIImage(named: imgName)
+        
+        let item=UIBarButtonItem(image: img, style: UIBarButtonItemStyle.plain, target: self, action: #selector(rightButtonAction))
+        self.navigationItem.rightBarButtonItem=item
+    }
+   
+    
+    func rightButtonAction() {
+        DLog(message: "right button")
     }
     func initLoadingView() {
         HUDView.startAnimating()
@@ -33,17 +70,25 @@ open class BaseViewController: UIViewController {
     func layoutPageSubViews()  {
         
     }
-    //MARK:-----属性-----
-    lazy var HUDView: UIActivityIndicatorView = {
-        let HUDView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        let centerOffset = CGPoint(x: self.view.center.x, y: self.view.center.y-50)
-        HUDView.center = centerOffset
-        return HUDView
-    }()
-  
-
 }
+//简单的alert
 extension BaseViewController{
     
 
+    func alert(title:String,msg:String){
+        let alertVC = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        //        alertVC.addTextField { (tField:UITextField!) -> Void in
+        //            tField.placeholder = "Account"
+        //        }
+        //        let acOK = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (alertAction:UIAlertAction!) -> Void in
+        //        }
+        let acCancel = UIAlertAction(title: "确定", style: UIAlertActionStyle.cancel) { (alertAction:UIAlertAction!) -> Void in
+        }
+        //        acOK.isEnabled = false
+        //        alertVC.addAction(acOK)
+        alertVC.addAction(acCancel)
+        //因为UIAlertController是控制器，所以我们现在得改用控制器弹出
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
 }
