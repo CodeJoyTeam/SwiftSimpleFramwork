@@ -15,6 +15,7 @@ open class BaseViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
         self.edgesForExtendedLayout = .init(rawValue: 0)
         self.view.addSubview(HUDView)
+        setLeftButton()
     }
 
     override open func didReceiveMemoryWarning() {
@@ -33,11 +34,14 @@ open class BaseViewController: UIViewController {
         return HUDView
     }()
 }
-
+//布局
+extension BaseViewController{
+    func layoutPageSubViews(){
+        
+    }
+}
 //nav bar  按钮
 extension BaseViewController{
-
-    
     //右边按钮  纯文字
     func setRightButton(title:String){
         let btn=UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
@@ -56,24 +60,31 @@ extension BaseViewController{
         let item=UIBarButtonItem(image: img, style: UIBarButtonItemStyle.plain, target: self, action: #selector(rightButtonAction))
         self.navigationItem.rightBarButtonItem=item
     }
-   
-    
+
     func rightButtonAction() {
         DLog(message: "right button")
     }
-    func initLoadingView() {
-        HUDView.startAnimating()
+    
+    //设置返回按钮
+    func setLeftButton(){
+        //判断如果不是根视图
+        if((self.navigationController?.childViewControllers.count)! > 1){
+            let leftBarBtn = UIBarButtonItem(title: nil, style: .plain, target: self,
+                                             action: #selector(leftButtonAction))
+            leftBarBtn.image = UIImage(named: "button_back")
+            //用于消除左边空隙，要不然按钮顶不到最前面
+            let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+            spacer.width = -10;
+            self.navigationItem.leftBarButtonItems = [spacer, leftBarBtn]
+        }
+
     }
-    func removeLoadingView() {
-        HUDView.stopAnimating()
-    }
-    func layoutPageSubViews()  {
-        
+    func leftButtonAction(){
+        _ = self.navigationController?.popViewController(animated: true)
     }
 }
 //简单的alert
 extension BaseViewController{
-    
 
     func alert(title:String,msg:String){
         let alertVC = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.alert)
@@ -90,5 +101,14 @@ extension BaseViewController{
         //因为UIAlertController是控制器，所以我们现在得改用控制器弹出
         self.present(alertVC, animated: true, completion: nil)
     }
-    
 }
+//网络加载 菊花
+extension BaseViewController{
+    func initLoadingView() {
+        HUDView.startAnimating()
+    }
+    func removeLoadingView() {
+        HUDView.stopAnimating()
+    }
+}
+
