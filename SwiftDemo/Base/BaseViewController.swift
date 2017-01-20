@@ -14,6 +14,7 @@ open class BaseViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.edgesForExtendedLayout = .init(rawValue: 0)
+        self.view.addSubview(HUDView)
     }
 
     override open func didReceiveMemoryWarning() {
@@ -23,17 +24,26 @@ open class BaseViewController: UIViewController {
         super.viewWillAppear(animated)
         self.layoutPageSubViews()
     }
+    func initLoadingView() {
+        HUDView.startAnimating()
+    }
+    func removeLoadingView() {
+        HUDView.stopAnimating()
+    }
     func layoutPageSubViews()  {
         
     }
-    
+    //MARK:-----属性-----
+    lazy var HUDView: UIActivityIndicatorView = {
+        let HUDView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let centerOffset = CGPoint(x: self.view.center.x, y: self.view.center.y-50)
+        HUDView.center = centerOffset
+        return HUDView
+    }()
   
 
 }
 extension BaseViewController{
     
-   
-    
-    
-    
+
 }

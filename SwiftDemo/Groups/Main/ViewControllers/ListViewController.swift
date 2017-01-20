@@ -20,7 +20,7 @@ class ListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-        refresh()
+        loadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,6 +37,8 @@ class ListViewController: BaseViewController {
         
     }
     
+    
+    //MARK:----属性-----
     lazy var demoTableView:UITableView = {
         let _demoTableView = UITableView.init(frame: CGRect(x:0,y:0,width:0,height:0), style: UITableViewStyle.plain)
         _demoTableView.backgroundColor = UIColor.clear
@@ -62,7 +64,7 @@ extension ListViewController{
         header = ESRefreshHeaderAnimator.init(frame: CGRect.zero)
         footer = ESRefreshFooterAnimator.init(frame: CGRect.zero)
         _ = self.demoTableView.es_addPullToRefresh(animator: header) { [weak self] in
-            self?.refresh()
+            self?.loadData()
         }
         _ = self.demoTableView.es_addInfiniteScrolling(animator: footer) { [weak self] in
             self?.loadMore()
@@ -72,13 +74,15 @@ extension ListViewController{
         }
     }
     //刷新
-    func refresh(){
+    func loadData(){
+        self.initLoadingView()
         ApiManager.sharedInstance.getListData(success: { (value) in
-            
+            self.removeLoadingView()
             self.json = JSON(value)
             self.demoTableView.reloadData()
             self.demoTableView.es_stopPullToRefresh()
         }) { (error) in
+            self.removeLoadingView()
             self.demoTableView.es_stopPullToRefresh()
         }
     }
@@ -87,8 +91,8 @@ extension ListViewController{
         DLog(message: "loadMore")
         self.demoTableView.reloadData()
         self.demoTableView.es_stopLoadingMore()
-//        self.demoTableView.es_noticeNoMoreData()
-//        self.demoTableView.es_removeRefreshFooter()
+        //self.demoTableView.es_noticeNoMoreData()
+        //self.demoTableView.es_removeRefreshFooter()
     }
 
 }
