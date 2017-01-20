@@ -58,6 +58,7 @@ extension BaseViewController{
         let img=UIImage(named: imgName)
         
         let item=UIBarButtonItem(image: img, style: UIBarButtonItemStyle.plain, target: self, action: #selector(rightButtonAction))
+        item.tintColor = UIColor.white
         self.navigationItem.rightBarButtonItem=item
     }
 
@@ -72,6 +73,7 @@ extension BaseViewController{
             let leftBarBtn = UIBarButtonItem(title: nil, style: .plain, target: self,
                                              action: #selector(leftButtonAction))
             leftBarBtn.image = UIImage(named: "button_back")
+            leftBarBtn.tintColor = UIColor.white
             //用于消除左边空隙，要不然按钮顶不到最前面
             let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             spacer.width = -10;
