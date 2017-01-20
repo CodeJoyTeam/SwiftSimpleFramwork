@@ -26,6 +26,7 @@ open class BaseViewController: UIViewController {
         super.viewWillAppear(animated)
         layoutPageSubViews()
     }
+    
     //MARK:-----属性-----
     lazy var HUDView: UIActivityIndicatorView = {
         let HUDView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
