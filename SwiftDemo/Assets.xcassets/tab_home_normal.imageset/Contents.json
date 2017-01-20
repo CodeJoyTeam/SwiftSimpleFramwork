@@ -2,7 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "tab_home_normal.pdf"
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "首页-首页.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

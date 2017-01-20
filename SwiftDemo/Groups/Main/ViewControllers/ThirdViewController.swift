@@ -12,7 +12,7 @@ class ThirdViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "第三页面"
+        self.navigationItem.title = "购物车"
         // Do any additional setup after loading the view.
     }
 
