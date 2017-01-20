@@ -13,6 +13,10 @@ class RootTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tabBar.isTranslucent = false  //避免受默认的半透明色影响，关闭
+        self.tabBar.tintColor = UIColor.orange //设置选中颜色，这里使用黄色
+        
+        
         self.configureItems()
     }
 
