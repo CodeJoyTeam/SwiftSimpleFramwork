@@ -36,7 +36,7 @@ open class ESRefreshHeaderAnimator: UIView, ESRefreshProtocol, ESRefreshAnimator
             }
         }
     }
-    open var releaseToRefreshDescription = "Release to refresh"
+    open var releaseToRefreshDescription = "松开刷新"
     open var loadingDescription = "Loading..."
 
     open var view: UIView { return self }
