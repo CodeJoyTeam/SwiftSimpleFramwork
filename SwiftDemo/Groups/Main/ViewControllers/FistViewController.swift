@@ -51,7 +51,7 @@ class FistViewController: BaseViewController {
 extension FistViewController{
 
     func setUpView() {
-        self.title = "第一页面"
+        self.navigationItem.title = "一把梭"
         self.view.addSubview(self.demoTableView)
         self.demoTableView.register(UITableViewCell.self, forCellReuseIdentifier: CellIdentifierClass)
     }

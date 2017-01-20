@@ -12,7 +12,7 @@ class FourthViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "第四页面"
+        self.navigationItem.title = "我的"
        
     }
 
