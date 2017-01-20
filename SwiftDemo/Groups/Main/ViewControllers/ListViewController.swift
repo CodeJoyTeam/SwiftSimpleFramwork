@@ -114,7 +114,7 @@ extension ListViewController:UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierClass)!
-        
+       
         let anchor_city = self.json["data"][indexPath.row]["anchor_city"]
         let avatar_small = self.json["data"][indexPath.row]["avatar_small"]
         let str_avatar_small:String = avatar_small.string == nil ? "" : avatar_small.string!
