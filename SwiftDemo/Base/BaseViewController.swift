@@ -14,6 +14,7 @@ open class BaseViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.edgesForExtendedLayout = .init(rawValue: 0)
+        self.view.addSubview(HUDView)
     }
 
     override open func didReceiveMemoryWarning() {
@@ -24,6 +25,13 @@ open class BaseViewController: UIViewController {
         super.viewWillAppear(animated)
         layoutPageSubViews()
     }
+    //MARK:-----属性-----
+    lazy var HUDView: UIActivityIndicatorView = {
+        let HUDView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let centerOffset = CGPoint(x: self.view.center.x, y: self.view.center.y-50)
+        HUDView.center = centerOffset
+        return HUDView
+    }()
 }
 
 //nav bar  按钮
@@ -53,14 +61,20 @@ extension BaseViewController{
     func rightButtonAction() {
         DLog(message: "right button")
     }
+    func initLoadingView() {
+        HUDView.startAnimating()
+    }
+    func removeLoadingView() {
+        HUDView.stopAnimating()
+    }
     func layoutPageSubViews()  {
         
     }
-    
 }
 //简单的alert
 extension BaseViewController{
     
+
     func alert(title:String,msg:String){
         let alertVC = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.alert)
         //        alertVC.addTextField { (tField:UITextField!) -> Void in
