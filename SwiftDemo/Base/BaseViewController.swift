@@ -76,7 +76,7 @@ extension BaseViewController{
             leftBarBtn.tintColor = UIColor.white
             //用于消除左边空隙，要不然按钮顶不到最前面
             let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-            spacer.width = -10;
+            spacer.width = -5;
             self.navigationItem.leftBarButtonItems = [spacer, leftBarBtn]
         }
 

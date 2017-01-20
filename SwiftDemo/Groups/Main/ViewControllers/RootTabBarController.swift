@@ -30,22 +30,22 @@ extension RootTabBarController{
         
         
         let firstVC  = BaseNavigationController(rootViewController: FistViewController())
-        let item1 : UITabBarItem = UITabBarItem (title: nil, image: UIImage(named: "tab_home_normal"), selectedImage: UIImage(named: "tab_home_selected"))
+        let item1 : UITabBarItem = UITabBarItem (title: "首页", image: UIImage(named: "tab_home_normal"), selectedImage: UIImage(named: "tab_home_selected"))
         firstVC.tabBarItem = item1
 
         let secondVC = BaseNavigationController(rootViewController: SecondViewController())
-        let item2 : UITabBarItem = UITabBarItem (title: "第二页面", image: UIImage(named: "tab_find_normal"), selectedImage: UIImage(named: "tab_find_selected"))
+        let item2 : UITabBarItem = UITabBarItem (title: "发现", image: UIImage(named: "tab_find_normal"), selectedImage: UIImage(named: "tab_find_selected"))
        
         
         
         secondVC.tabBarItem = item2
         
         let thirdVC = BaseNavigationController(rootViewController: ThirdViewController())
-        let item3 : UITabBarItem = UITabBarItem (title: "第三页面", image: UIImage(named: "tab_cart_normal"), selectedImage: UIImage(named: "tab_cart_selected"))
+        let item3 : UITabBarItem = UITabBarItem (title: "购物车", image: UIImage(named: "tab_cart_normal"), selectedImage: UIImage(named: "tab_cart_selected"))
         thirdVC.tabBarItem = item3
         
         let fourthVC = BaseNavigationController(rootViewController: FourthViewController())
-        let item4 : UITabBarItem = UITabBarItem (title: "第四页面", image: UIImage(named: "tab_user_normal"), selectedImage: UIImage(named: "tab_user_selected"))
+        let item4 : UITabBarItem = UITabBarItem (title: "我的", image: UIImage(named: "tab_user_normal"), selectedImage: UIImage(named: "tab_user_selected"))
         fourthVC.tabBarItem = item4
         
         let tabArray = [firstVC,secondVC,thirdVC,fourthVC]
